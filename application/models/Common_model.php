@@ -12,7 +12,7 @@ class Common_model extends CI_Model {
         return $this->db->get()->result_array();
     }
 
-    //update function with  2 where condition
+    //update function with 2 where condition
     public function update_table2($tbl_name, $data, $column_name, $id, $column_name1, $id1) {
         $this->db->where($column_name, $id);
         $this->db->where($column_name1, $id1);
