@@ -817,7 +817,7 @@ class Service extends CI_Controller {
             if($row->category_id=='0'){
             $categoryname .= $row->subcategory_name ;
                 }else{
-            $categoryname .= $this->common->selectivename($row->category_id,'subcategory_name','servicesubcategoory') ;
+            $categoryname .= $this->common->cat_name($row->category_id,'subcategory_name','servicesubcategoory') ;
                 }
             $sub_array[] = $categoryname;
 

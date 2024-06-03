@@ -945,7 +945,7 @@ class Product extends CI_Controller {
             if($row->category_id=='0'){
             $categoryname .= $row->subcategory ;
                 }else{
-            $categoryname .= $this->common->selectivename($row->category_id,'subcategory','tbl_subcategory') ;
+            $categoryname .= $this->common->cat_name($row->category_id,'subcategory','tbl_subcategory') ;
                 }
             $sub_array[] = $categoryname;
 

@@ -254,16 +254,6 @@ class Common_model extends CI_Model {
         return $query;
     }
 
-    public function selectivename($id, $select, $tblname) {
-        $this->db->select($select);
-        $this->db->where('id', $id);
-        $this->db->from($tblname);
-        $name_data = $this->db->get()->result_array();
-        foreach ($name_data as $value) {
-            return $value[$select];
-        }
-    }
-
     public function selectivename2($id, $select, $tblname, $w) {
         $this->db->select($select);
         $this->db->where($w, $id);
