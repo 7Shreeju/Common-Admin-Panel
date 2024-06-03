@@ -196,6 +196,7 @@ class Common_model extends CI_Model {
         return $response;
     }
 
+    // upload image
     public function upload_image($image_data, $num, $path1) {
         $image = md5(date("d-m-y:h:i s")) . "_" . $num;
         if (is_array($image_data)) {
