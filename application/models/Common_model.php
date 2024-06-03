@@ -171,7 +171,7 @@ class Common_model extends CI_Model {
         $this->db->delete($tbl);
     }
 
-    //deleting multiple data 
+    //deleting multiple data in select all 
     public function deleteAll($id, $tbl,$where) {
         $this->db->where_in($where, $id);
         $this->db->delete($tbl);
