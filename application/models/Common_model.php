@@ -5,7 +5,7 @@ class Common_model extends CI_Model {
         parent::__construct();
     }
 
-    function view1() {
+    public function view1() {
         $this->db->select('*');
         $this->db->from('user_login');
         $this->db->where('id', '1');
@@ -13,7 +13,7 @@ class Common_model extends CI_Model {
     }
 
     //update function with  2 where condition
-    function update_table2($tbl_name, $data, $column_name, $id, $column_name1, $id1) {
+    public function update_table2($tbl_name, $data, $column_name, $id, $column_name1, $id1) {
         $this->db->where($column_name, $id);
         $this->db->where($column_name1, $id1);
         $this->db->update($tbl_name, $data);
@@ -30,7 +30,7 @@ class Common_model extends CI_Model {
     }
 
     //to get single data from different table using id 
-    function cat_name($id, $column_name, $tbl_name) {
+    public function cat_name($id, $column_name, $tbl_name) {
         $this->db->select($column_name);
         $this->db->where('id', $id);
         $this->db->from($tbl_name);
@@ -41,20 +41,20 @@ class Common_model extends CI_Model {
     }
 
     //insert 
-    function insert_table($tbl_name, $data) {
+    public function insert_table($tbl_name, $data) {
         $this->db->insert($tbl_name, $data);
         return $this->db->insert_id();
     }
 
     //update table by id 
-    function update_table($tbl_name, $data, $id) {
+    public function update_table($tbl_name, $data, $id) {
         $this->db->where('id', $id);
         $this->db->update($tbl_name, $data);
         return $this->db->affected_rows();
     }
 
     //list 
-    function list($tbl_name) {
+    public function list($tbl_name) {
         $this->db->select('*');
         $this->db->order_by('id', 'desc');
         $this->db->from($tbl_name);
@@ -62,7 +62,7 @@ class Common_model extends CI_Model {
     }
 
     //list with status as active 
-    function list2($tbl_name) {
+    public function list2($tbl_name) {
         $this->db->select('*');
         $this->db->order_by('id', 'desc');
         $this->db->where('status', '1');
@@ -71,7 +71,7 @@ class Common_model extends CI_Model {
     }
 
     //list with where condition 
-    function list1($tbl_name, $column_name, $fetch_id) {
+    public function list1($tbl_name, $column_name, $fetch_id) {
         $this->db->select('*');
         $this->db->order_by('id', 'desc');
         $this->db->where($column_name, $fetch_id);
@@ -80,7 +80,7 @@ class Common_model extends CI_Model {
     }
 
     //to get data in edit page 
-    function view($tbl_name, $id) {
+    public function view($tbl_name, $id) {
         $this->db->select('*');
         $this->db->where('id', $id);
 
@@ -89,7 +89,7 @@ class Common_model extends CI_Model {
     }
 
     //to get the category in category and subcategory stored in one table 
-    function subcat($tbl) {
+    public function subcat($tbl) {
         $this->db->select('*');
         $this->db->where('category_id', '0');
         $this->db->where('status', '1');
@@ -98,14 +98,14 @@ class Common_model extends CI_Model {
     }
 
     //count all data 
-    function count($tbl_name) {
+    public function count($tbl_name) {
         $this->db->select('*');
         $this->db->from($tbl_name);
         return  $this->db->count_all_results();
     }
 
     //count monthwise data 
-    function count_month($tbl_name) {
+    public function count_month($tbl_name) {
         $this->db->select('*');
         $this->db->where('MONTH(date)', date('m'));
         $this->db->from($tbl_name);
@@ -113,7 +113,7 @@ class Common_model extends CI_Model {
     }
 
     //to check data exist or not in edit functionality 
-    function check_unique_order_no($order_no, $tbl_name, $column_name, $id = '') {
+    public function check_unique_order_no($order_no, $tbl_name, $column_name, $id = '') {
         $this->db->where($column_name, $order_no);
         if ($id) {
             $this->db->where_not_in('id', $id);
@@ -122,7 +122,7 @@ class Common_model extends CI_Model {
     }
 
     //fetch data in row 
-    function fetch_data($id, $tbl_name) {
+    public function fetch_data($id, $tbl_name) {
         $this->db->select('*');
         $this->db->where('id', $id);
         $this->db->from($tbl_name);
@@ -138,20 +138,20 @@ class Common_model extends CI_Model {
     }
 
     //update data with 1 where condition 
-    function update_table1($tbl_name, $data, $column_name, $id) {
+    public function update_table1($tbl_name, $data, $column_name, $id) {
         $this->db->where($column_name, $id);
         $this->db->update($tbl_name, $data);
         return $this->db->affected_rows();
     }
 
     //delete data with 1 where condition
-    function delete_table1($tbl_name, $column_name, $id) {
+    public function delete_table1($tbl_name, $column_name, $id) {
         $this->db->where($column_name, $id);
         $this->db->delete($tbl_name);
     }
 
     //delete data with 1 where condition
-    function delete_table2($tbl_name, $column_name, $id, $column_name1, $id1) {
+    public function delete_table2($tbl_name, $column_name, $id, $column_name1, $id1) {
         $this->db->where($column_name, $id);
         $this->db->where($column_name1, $id1);
 
@@ -159,7 +159,7 @@ class Common_model extends CI_Model {
     }
 
     //delete data 
-    function delete_table($tbl_name, $id) {
+    public function delete_table($tbl_name, $id) {
         $this->db->where('id', $id);
         $this->db->delete($tbl_name);
     }
@@ -184,7 +184,7 @@ class Common_model extends CI_Model {
     }
 
     //category subcategory on change data 
-    function getSubcategoryDependency($postData, $column_name1, $column_name3, $tbl_name) {
+    public function getSubcategoryDependency($postData, $column_name1, $column_name3, $tbl_name) {
         $response = array();
         $this->db->select($column_name1);
         $this->db->where($column_name3, $postData[$column_name3]);
@@ -254,7 +254,7 @@ class Common_model extends CI_Model {
         return $query;
     }
 
-    function selectivename($id, $select, $tblname) {
+    public function selectivename($id, $select, $tblname) {
         $this->db->select($select);
         $this->db->where('id', $id);
         $this->db->from($tblname);
@@ -264,7 +264,7 @@ class Common_model extends CI_Model {
         }
     }
 
-    function selectivename2($id, $select, $tblname, $w) {
+    public function selectivename2($id, $select, $tblname, $w) {
         $this->db->select($select);
         $this->db->where($w, $id);
         $this->db->from($tblname);
@@ -477,7 +477,7 @@ class Common_model extends CI_Model {
     }
 
     //For Dashboard analytics
-    function visitorDates($date1, $date2) {
+    public function visitorDates($date1, $date2) {
         $dates = array();
         $current = strtotime($date1);
         $datetwo = strtotime($date2);
@@ -495,7 +495,7 @@ class Common_model extends CI_Model {
         return $dates;
     }
 
-    function pageviewDates($date1, $date2) {
+    public function pageviewDates($date1, $date2) {
         $dates = array();
         $current = strtotime($date1);
         $datetwo = strtotime($date2);
@@ -513,7 +513,7 @@ class Common_model extends CI_Model {
         return $dates;
     }
 
-    function pageviewDatesCounts($date1, $date2, $data) {
+    public function pageviewDatesCounts($date1, $date2, $data) {
         $dates = array();
         $current = strtotime($date1);
         $datetwo = strtotime($date2);
@@ -544,7 +544,7 @@ class Common_model extends CI_Model {
         return $counts;
     }
 
-    function visitorDatesCounts($date1, $date2, $data) {
+    public function visitorDatesCounts($date1, $date2, $data) {
         $dates = array();
         $current = strtotime($date1);
         $datetwo = strtotime($date2);
@@ -574,7 +574,7 @@ class Common_model extends CI_Model {
         return $counts;
     }
 
-    function analitics_data($data, $from, $to) {
+    public function analitics_data($data, $from, $to) {
         $url = "https://digihostsolutions.com/analytics-platform/public/api/v1/stats/1?name=" . $data . "&from=" . $from . "&to=" . $to . "";
 
         $curl = curl_init($url);
@@ -609,7 +609,7 @@ class Common_model extends CI_Model {
         // 	echo json_encode($fetch_var);
     }
 
-    function created_date() {
+    public function created_date() {
         $url = "https://digihostsolutions.com/analytics-platform/public/api/v1/websites";
 
         $curl = curl_init($url);
